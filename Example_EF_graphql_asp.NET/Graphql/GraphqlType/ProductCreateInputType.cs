@@ -10,8 +10,8 @@ namespace Example_EF_graphql_asp.NET.Graphql
             Name = "ProductCreateInputType";
             Field<NonNullGraphType<StringGraphType>>("name");
             Field<StringGraphType>("detail");
-            Field<NonNullGraphType<ULongGraphType>>("cost");
-            Field<NonNullGraphType<GuidGraphType>>("categoryId");
+            Field<NonNullGraphType<IntGraphType>>("cost");
+            Field<NonNullGraphType<IdGraphType>>("categoryId");
         }
     }
 }

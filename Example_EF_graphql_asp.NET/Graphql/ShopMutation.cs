@@ -1,6 +1,7 @@
 ﻿using Example_EF_graphql_asp.NET.Data;
 using Example_EF_graphql_asp.NET.Models;
 using GraphQL.Types;
+using System;
 
 namespace Example_EF_graphql_asp.NET.Graphql
 {
@@ -20,10 +21,12 @@ namespace Example_EF_graphql_asp.NET.Graphql
                     //var category = new Category
                     //{
                     //    Name = categoryInput.Name,
-                    //    Detail=categoryInput.Detail,
-                        
+                    //    Detail = categoryInput.Detail,
+
                     //};
-                    return await dataContext.Category.AddAsync(categoryInput);
+                    dataContext.Category.Add(categoryInput);
+                    await dataContext.SaveChangesAsync();
+                    return categoryInput;
                 }
             );
 
@@ -35,8 +38,11 @@ namespace Example_EF_graphql_asp.NET.Graphql
                 resolve: async context =>
                 {
                     var productInput = context.GetArgument<Product>("product");
-                    return await dataContext.Product.AddAsync(productInput);    
-                
+                    
+                    dataContext.Product.Add(productInput);
+                    await dataContext.SaveChangesAsync();
+                    return productInput;
+
                 }
             );
 

@@ -11,7 +11,7 @@ namespace Example_EF_graphql_asp.NET.Graphql
     {
         public CategoryType()
         {
-            Field(o => o.Id);
+            Field(x => x.Id, type: typeof(IdGraphType)).Description("Id of the UserProfile");
             Field(o => o.Name);
             Field(o => o.Detail);
             Field(o => o.Deleted);

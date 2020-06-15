@@ -12,11 +12,11 @@ namespace Example_EF_graphql_asp.NET.Graphql
     {
         public ProductType(DataContext context)
         {
-            Field(o => o.Id);
-            Field(o => o.Name);
-            Field(o => o.Cost);
-            Field(o => o.Detail);
-            Field(o => o.Deleted);
+            Field(x => x.Id, type: typeof(IdGraphType)).Description("Id of the UserProfile");
+            Field(x => x.Name);
+            Field(x => x.Cost);
+            Field(x => x.Detail);
+            Field(x => x.Deleted);
 
             Field<CategoryType>(nameof(Category));
 
